@@ -1,0 +1,31 @@
+# --- Python & Environment ---
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# --- Django Specific ---
+db.sqlite3
+db.sqlite3-journal
+/static/
+/media/
+.env
+local_settings.py
+
+
+# --- PyCharm/IDE Specific ---
+.idea/
+.vscode/
+*.swp
+*.bak
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+pip-log.txt
