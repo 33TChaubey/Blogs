@@ -19,8 +19,8 @@ class Category(models.Model):
         db_table = 'app_categories'  # Explicit table naming for clean DBs
 
 STATUS_CHOICES = (
-    (0, 'Draft'),
-    (1, 'Published'),
+    ("Draft", 'Draft'),
+    ("Published", 'Published'),
 )
 
 class Blogs(models.Model):
@@ -31,7 +31,7 @@ class Blogs(models.Model):
     featured_image = models.ImageField(upload_to='uploads/%Y/%m/%d')
     short_description = models.TextField(null=True, blank=True)
     blog_body = models.TextField(null=True, blank=True)
-    status = models.IntegerField(choices=STATUS_CHOICES, default=0)
+    status = models.CharField(choices=STATUS_CHOICES, default="Draft")
     is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
