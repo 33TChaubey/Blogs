@@ -15,6 +15,9 @@ db.sqlite3-journal
 .env
 local_settings.py
 
+# Ignore compiled python files inside migrations
+**/migrations/__pycache__/
+
 
 # --- PyCharm/IDE Specific ---
 .idea/
