@@ -71,7 +71,7 @@
       <div class="nav-scroller py-1 mb-4 border-bottom" data-aos="fade-in">
         <nav class="nav d-flex justify-content-between">
             {% for cat in categories %}
-                <a class="p-2 nav-link-custom" href="#">{{ cat.category_name }}</a>
+                <a class="p-2 nav-link-custom" href="{% url 'posts_by_category' cat.id %}">{{ cat.category_name }}</a>
             {% endfor %}
         </nav>
       </div>

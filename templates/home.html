@@ -1,5 +1,5 @@
 
-{% extend 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -27,7 +27,7 @@
               <strong class="d-inline-block mb-2 text-primary">Architecture</strong>
               <h3 class="mb-0">{{ post.title }}</h3>
               <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author }}</small>
-              <p class="card-text mt-2 text-secondary">{{ post.short_description|truncatechars:20 }}</p>
+              <p class="card-text mt-2 text-secondary">{{ post.short_description| truncatechars:20 }}</p>
             </div>
           </div>
         </div>
