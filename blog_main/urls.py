@@ -19,10 +19,12 @@ from django.urls import path, include
 from . import views, settings
 from django.conf.urls.static import static
 from django.conf import settings
+from blogs import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
     path('', views.home, name='home'),
+    path('category/', include('blogs.urls')),
 
-] + static(settings.STATIC_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

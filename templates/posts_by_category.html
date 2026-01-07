@@ -76,80 +76,50 @@
           <a class="p-2 nav-link-custom" href="#">Culture</a>
           <a class="p-2 nav-link-custom" href="#">Business</a>
           <a class="p-2 nav-link-custom" href="#">Politics</a>
-          <a class="p-2 nav-link-custom" href="#">Opinion</a>
-          <a class="p-2 nav-link-custom" href="#">Science</a>
-          <a class="p-2 nav-link-custom" href="#">Health</a>
-          <a class="p-2 nav-link-custom" href="#">Style</a>
-          <a class="p-2 nav-link-custom" href="#">Travel</a>
         </nav>
       </div>
 {% for post in featured_posts %}
       {% if forloop.first %}
       <div class="jumbotron p-4 p-md-5 text-white shadow-lg mb-4"
-           style="background: var(--primary-gradient), url({{ post.featured_image.url }}); background-blend-mode: overlay; background-size: cover; background-position: center;"
+           style="background: var(--primary-gradient), url(); background-blend-mode: overlay; background-size: cover; background-position: center;"
            data-aos="zoom-in">
         <div class="col-md-8 px-0">
           <h1 class="display-3 font-italic">{{ post.title }}</h1>
-          <p class="lead my-3">{{ post.short_description|truncatechars:40 }}</p>
+          <p class="lead my-3">{{ post.short_description | truncatechars:40 }}</p>
           <p class="lead mb-0"><a href="#" class="text-warning fw-bold text-decoration-none">Continue reading →</a></p>
         </div>
       </div>
       {% endif %}
 {% endfor %}
 
-      <h3 class="text-uppercase text-warning">Featured Posts</h3>
+      <h3 class="text-uppercase text-warning">{{ category }}</h3>
       <div class="row mb-4 mt-3">
-        {% for post in featured_posts %}
-        {% if not forloop.first %}
+          {% if posts %}
+        {% for post in posts %}
+
         <div class="col-md-6" data-aos="{% if forloop.counter == 1 %}fade-right{% elif forloop.counter == 2 %}fade-left{% else %}fade-up{% endif %}">
           <div class="card border-0 shadow-sm h-100 p-3 rounded-4">
             <div class="card-body">
-              <strong class="d-inline-block mb-2 text-primary">Architecture</strong>
+              <strong class="d-inline-block mb-2 text-primary">{{ post.category }}</strong>
               <h3 class="mb-0">{{ post.title }}</h3>
               <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author }}</small>
               <p class="card-text mt-2 text-secondary">{{ post.short_description|truncatechars:20 }}</p>
             </div>
           </div>
         </div>
-        {% endif %}
+
         {% endfor %}
+          {% else %}
 
+          <p>no posts found</p>
 
-      <main role="main" class="container p-0 mt-3">
-        <div class="row">
-          <div class="col-md-8 blog-main" data-aos="fade-up">
-            {% for post in posts %}
-            <div class="blog-post bg-white p-4 rounded-4 shadow-sm mb-4">
-              <h2 class="blog-post-title border-bottom pb-2">{{ post.title|truncatechars:25 }}</h2>
-              <p class="blog-post-meta">{{ post.created_at| timesince }} ago by <a href="#" class="text-decoration-none">{{ post.author }}</a></p>
-              <blockquote class="blockquote bg-light p-3 border-start border-4 border-warning rounded">
-                <p>{{ post.short_description|truncatechars:70 }}</p>
-              </blockquote>
-            </div>
-            {% endfor %}
-          </div>
+          {% endif %}
 
-          <aside class="col-md-4 blog-sidebar">
-            <div class="p-4 mb-4 glass-sidebar shadow-sm" data-aos="fade-left">
-              <h4 class="font-italic">About the Project</h4>
-              <p class="mb-0 text-secondary">Building highly performant, SEO-friendly blogs using Python and modern frontend utilities.</p>
-            </div>
-
-            <div class="p-4" data-aos="fade-up">
-              <h4 class="font-italic">Connect with us</h4>
-              <ol class="list-unstyled d-flex gap-3">
-                <li><a href="#" class="btn btn-outline-dark btn-sm rounded-circle"><i class="bi bi-github"></i>GitHub</a></li>
-                <li><a href="#" class="btn btn-primary btn-sm rounded-circle">LinkedIn</a></li>
-              </ol>
-            </div>
-          </aside>
-        </div>
-      </main>
     </div>
 
     <footer class="text-center mt-5">
       <div class="container">
-        <p class="mb-1">Django blog refined by <strong>Rathan Kumar</strong> &copy; 2026</p>
+        <p class="mb-1">Django blog refined by <strong>Trilokinath Chaubey</strong> &copy; 2026</p>
         <p><a href="#" class="text-warning text-decoration-none">Back to top</a></p>
       </div>
     </footer>
