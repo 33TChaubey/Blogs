@@ -11,7 +11,7 @@
         <div class="col-md-8 px-0">
           <h1 class="display-3 font-italic">{{ post.title }}</h1>
           <p class="lead my-3">{{ post.short_description|truncatechars:40 }}</p>
-          <p class="lead mb-0"><a href="#" class="text-warning fw-bold text-decoration-none">Continue reading →</a></p>
+          <p class="lead mb-0"><a href="{% url 'blogs' post.slug %}" class="text-warning fw-bold text-decoration-none">Continue reading →</a></p>
         </div>
       </div>
       {% endif %}
@@ -25,7 +25,7 @@
           <div class="card border-0 shadow-sm h-100 p-3 rounded-4">
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">Architecture</strong>
-              <h3 class="mb-0">{{ post.title }}</h3>
+              <a href="{% url 'blogs' post.slug %}"><h3 class="mb-0 text-black" style="text-decoration: none;" >{{ post.title }}</h3></a>
               <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author }}</small>
               <p class="card-text mt-2 text-secondary">{{ post.short_description| truncatechars:20 }}</p>
             </div>
@@ -40,7 +40,7 @@
           <div class="col-md-8 blog-main" data-aos="fade-up">
             {% for post in posts %}
             <div class="blog-post bg-white p-4 rounded-4 shadow-sm mb-4">
-              <h2 class="blog-post-title border-bottom pb-2">{{ post.title|truncatechars:25 }}</h2>
+              <a href=""><h2 class="blog-post-title border-bottom pb-2">{{ post.title|truncatechars:25 }}</h2></a>
               <p class="blog-post-meta">{{ post.created_at| timesince }} ago by <a href="#" class="text-decoration-none">{{ post.author }}</a></p>
               <blockquote class="blockquote bg-light p-3 border-start border-4 border-warning rounded">
                 <p>{{ post.short_description|truncatechars:70 }}</p>
