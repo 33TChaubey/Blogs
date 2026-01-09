@@ -1,19 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for post in featured_posts %}
-      {% if forloop.first %}
-      <div class="jumbotron p-4 p-md-5 text-white shadow-lg mb-4"
-           style="background: var(--primary-gradient), url(); background-blend-mode: overlay; background-size: cover; background-position: center;"
-           data-aos="zoom-in">
-        <div class="col-md-8 px-0">
-          <h1 class="display-3 font-italic">{{ post.title }}</h1>
-          <p class="lead my-3">{{ post.short_description | truncatechars:40 }}</p>
-          <p class="lead mb-0"><a href="#" class="text-warning fw-bold text-decoration-none">Continue reading →</a></p>
-        </div>
-      </div>
-      {% endif %}
-{% endfor %}
 
       <h3 class="text-uppercase text-warning">{{ category }}</h3>
       <div class="row mb-4 mt-3">
@@ -24,7 +11,7 @@
           <div class="card border-0 shadow-sm h-100 p-3 rounded-4">
             <div class="card-body">
               <strong class="d-inline-block mb-2 text-primary">{{ post.category }}</strong>
-              <h3 class="mb-0">{{ post.title }}</h3>
+              <h3 class="mb-0"><a href="{% url 'blogs' post.slug %}">{{ post.title }}</a></h3>
               <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author }}</small>
               <p class="card-text mt-2 text-secondary">{{ post.short_description|truncatechars:20 }}</p>
             </div>
