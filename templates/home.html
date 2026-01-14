@@ -51,17 +51,19 @@
 
           <aside class="col-md-4 blog-sidebar">
             <div class="p-4 mb-4 glass-sidebar shadow-sm" data-aos="fade-left">
-              <h4 class="font-italic">About the Project</h4>
-              <p class="mb-0 text-secondary">Building highly performant, SEO-friendly blogs using Python and modern frontend utilities.</p>
+              <h4 class="font-italic">{{ about.about_heading }}</h4>
+              <p class="mb-0 text-secondary">{{ about.about_description }}</p>
             </div>
-
+            {% if  social_links %}
             <div class="p-4" data-aos="fade-up">
               <h4 class="font-italic">Connect with us</h4>
               <ol class="list-unstyled d-flex gap-3">
-                <li><a href="#" class="btn btn-outline-dark btn-sm rounded-circle"><i class="bi bi-github"></i>GitHub</a></li>
-                <li><a href="#" class="btn btn-primary btn-sm rounded-circle">LinkedIn</a></li>
+                {% for i in social_links %}
+                  <li><a href="{{ i.link }}" class="btn btn-primary btn-sm rounded-circle">{{ i.platform }}</a></li>
+                {% endfor %}
               </ol>
             </div>
+            {% endif %}
           </aside>
         </div>
       </main>

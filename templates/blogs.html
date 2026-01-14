@@ -28,5 +28,15 @@
             </article>
         </div>
         <div class="col-lg-4">
+        {% if  social_links %}
+            <div class="p-4" data-aos="fade-up">
+              <h4 class="font-italic">Connect with us</h4>
+              <ol class="list-unstyled d-flex gap-3">
+                {% for i in social_links %}
+                  <li><a href="{{ i.link }}" class="btn btn-primary btn-sm rounded-circle">{{ i.platform }}</a></li>
+                {% endfor %}
+              </ol>
+            </div>
+            {% endif %}
 
 {% endblock %}
