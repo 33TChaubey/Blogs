@@ -40,7 +40,7 @@
           <div class="col-md-8 blog-main" data-aos="fade-up">
             {% for post in posts %}
             <div class="blog-post bg-white p-4 rounded-4 shadow-sm mb-4">
-              <a href=""><h2 class="blog-post-title border-bottom pb-2">{{ post.title|truncatechars:25 }}</h2></a>
+              <h2 class="blog-post-title border-bottom pb-2"><a href="{% url 'blogs' post.slug %}">{{ post.title|truncatechars:25 }}</a></h2>
               <p class="blog-post-meta">{{ post.created_at| timesince }} ago by <a href="#" class="text-decoration-none">{{ post.author }}</a></p>
               <blockquote class="blockquote bg-light p-3 border-start border-4 border-warning rounded">
                 <p>{{ post.short_description|truncatechars:70 }}</p>

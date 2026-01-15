@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class=" text-warning">{{keyword}} </h3>
+      <div class="row mb-4 mt-3">
+          {% if blogs %}
+        {% for i in blogs %}
+
+        <div class="col-md-6" data-aos="{% if forloop.counter == 1 %}fade-right{% elif forloop.counter == 2 %}fade-left{% else %}fade-up{% endif %}">
+          <div class="card border-0 shadow-sm h-100 p-3 rounded-4">
+            <div class="card-body">
+              <strong class="d-inline-block mb-2 text-primary">{{ i.category }}</strong>
+              <h3 class="mb-0"><a href="{% url 'blogs' i.slug %}">{{ i.title }}</a></h3>
+              <small class="mb-1 text-muted">{{ i.created_at | timesince }} ago | {{ i.author }}</small>
+              <p class="card-text mt-2 text-secondary">{{ i.short_description|truncatechars:20 }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+          {% else %}
+
+
+<div class="container py-5 text-center" data-aos="zoom-in" data-aos-duration="800">
+    <div class="no-posts-wrapper">
+        <div class="empty-icon-container mb-4">
+            <span class="empty-emoji">📝</span>
+            <div class="yellow-pulse"></div>
+        </div>
+
+        <h2 class="fw-bold text-dark">A Bit Quiet Here!</h2>
+        <p class="text-muted mb-4">We haven't published any stories in this category yet.<br>
+           Check back soon or explore our other exciting news!</p>
+
+        <a href="/" class="btn btn-warning rounded-pill px-5 py-2 fw-bold shadow-sm">
+            Explore All News 🏠
+        </a>
+    </div>
+</div>
+
+<style>
+    .no-posts-wrapper {
+        background: #ffffff;
+        padding: 50px;
+        border-radius: 30px;
+        border: 2px dashed #FFD700; /* Yellow dashed border */
+    }
+
+    .empty-icon-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .empty-emoji {
+        font-size: 80px;
+        display: block;
+        position: relative;
+        z-index: 2;
+        animation: floating 3s ease-in-out infinite;
+    }
+
+    /* Yellow pulsing background effect */
+    .yellow-pulse {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background-color: rgba(255, 215, 0, 0.2);
+        border-radius: 50%;
+        z-index: 1;
+        animation: pulse-yellow 2s infinite;
+    }
+
+    @keyframes floating {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulse-yellow {
+        0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.7; }
+        70% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+        100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0; }
+    }
+</style>
+
+          {% endif %}
+
+{% endblock %}
