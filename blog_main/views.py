@@ -1,8 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
 from assignment.models import About
 from blogs.models import Category, Blogs
+from .forms import RegisterForm
 
 
 def home(request):
@@ -25,4 +25,18 @@ def home(request):
 
 
 def register(request):
-    return render(request, 'register.html')
+    if request.method == 'POST':
+        forms = RegisterForm(request.POST)
+        if forms.is_valid():
+            forms.save()
+            return redirect('register')
+    else:
+        forms = RegisterForm()
+
+    context = {
+        'forms': forms,
+    }
+    return render(request, 'register.html', context)
+
+
+
