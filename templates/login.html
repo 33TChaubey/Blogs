@@ -95,7 +95,7 @@
     <h2>Secure Login</h2>
     <form action="" method="POST">
         {% csrf_token %}
-        {{ forms | crispy}}
+        {{ form | crispy}}
         <button type="submit" class="btn-submit">Submit</button>
     </form>
 </div>
