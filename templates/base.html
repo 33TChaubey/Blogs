@@ -126,7 +126,7 @@
                 <a class="btn btn-sm btn-warning px-3 rounded-pill fw-bold" href="{% url 'register' %}">Login</a>
                 <a class="btn btn-sm btn-outline-dark px-3 rounded-pill" href="{% url 'register' %}">Register</a>
                 {% else %}
-                <span>you are logged in as {{ user }}</span>
+                <span><a href="{% url 'dashboard' %}">Dashboards</span></a>
                 &emsp;
                 <span><a href="">Logout</a></span>
                 {% endif %}
