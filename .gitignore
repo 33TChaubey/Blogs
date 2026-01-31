@@ -44,3 +44,8 @@ pip-log.txt
 /blogs/__init__.py
 /assignment/tests.py
 /blogs/tests.py
+/dashboards/migrations/__init__.py
+/dashboards/__init__.py
+/dashboards/admin.py
+/dashboards/apps.py
+/dashboards/tests.py
